@@ -1,0 +1,5 @@
+symlinks:
+tempdir/fast
+tempdir/slow
+
+in src link to source files

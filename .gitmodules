@@ -1,0 +1,15 @@
+[submodule "data"]
+	path = data
+	url = https://theogit.fmi.uni-stuttgart.de/bahrdtdl/oscar-experiments-data.git
+[submodule "progs/vendor/oscar"]
+	path = progs/vendor/oscar
+	url = https://github.com/dbahrdt/oscar.git
+[submodule "progs/vendor/ocse"]
+	path = progs/vendor/ocse
+	url = https://github.com/dbahrdt/oti-compare.git
+[submodule "progs/vendor/bitpacking"]
+	path = progs/vendor/bitpacking
+	url = https://github.com/dbahrdt/bitpack-compare.git
+[submodule "progs/vendor/osi-compare"]
+	path = progs/vendor/osi-compare
+	url = https://github.com/dbahrdt/osi-compare.git
