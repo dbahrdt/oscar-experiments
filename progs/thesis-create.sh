@@ -207,20 +207,20 @@
 ./create.sh -t=osi-create -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
 
 #osi compare stuff
-./create.sh -t=osi-query -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
-./create.sh -t=osi-query -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
-./create.sh -t=osi-query -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
-./create.sh -t=osi-query -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
+./create.sh -t=osi-bench -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
+./create.sh -t=osi-bench -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
+./create.sh -t=osi-bench -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
+./create.sh -t=osi-bench -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=11
 
-./create.sh -t=osi-query -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
-./create.sh -t=osi-query -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
-./create.sh -t=osi-query -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
-./create.sh -t=osi-query -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
+./create.sh -t=osi-bench -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
+./create.sh -t=osi-bench -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
+./create.sh -t=osi-bench -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
+./create.sh -t=osi-bench -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=h3 --osi-levels=6
 
-./create.sh -t=osi-query -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
-./create.sh -t=osi-query -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
-./create.sh -t=osi-query -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
-./create.sh -t=osi-query -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
+./create.sh -t=osi-bench -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
+./create.sh -t=osi-bench -s=de -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
+./create.sh -t=osi-bench -s=eu -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
+./create.sh -t=osi-bench -s=pl -c=disconnected -b=ultra -ot=substring --osi-index-type=simplegrid --osi-levels=12
 
 #osi stats stuff
 ./create.sh -t=osi-stats -s=bw -c=disconnected -b=ultra -ot=substring --osi-index-type=htm --osi-levels=12
