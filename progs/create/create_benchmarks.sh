@@ -109,28 +109,42 @@ if [ "${SEARCH_TYPE}" = "osi" ]; then
 
 	MY_SOP="${MY_LOGFILE_PREFIX}.tcqr.text"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "true" 0 2>&1 > ${MY_SOP}.log
+		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "true" "false" 0 2>&1 > ${MY_SOP}.log
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
 	
 	MY_SOP="${MY_LOGFILE_PREFIX}.cqr.text"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" 1 2>&1 > ${MY_SOP}.log
+		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" "false" 1 2>&1 > ${MY_SOP}.log
+	else
+		echo "Skipping ${MY_SOP}"
+	fi
+	
+	MY_SOP="${MY_LOGFILE_PREFIX}.hcqr.text"
+	if [ ! -s "${MY_SOP}.log" ]; then
+		${OSI_QUERY_BINARY} -o ${SEARCH_OSCAR_DEST} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
 	
 	MY_SOP="${MY_LOGFILE_PREFIX}.tcqr.text.setops"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "true" 0 2>&1 > ${MY_SOP}.log
+		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "true" "false" 0 2>&1 > ${MY_SOP}.log
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
 	
 	MY_SOP="${MY_LOGFILE_PREFIX}.cqr.text.setops"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" 1 2>&1 > ${MY_SOP}.log
+		${OSI_QUERY_BINARY} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" "false" 1 2>&1 > ${MY_SOP}.log
+	else
+		echo "Skipping ${MY_SOP}"
+	fi
+	
+	MY_SOP="${MY_LOGFILE_PREFIX}.hcqr.text.setops"
+	if [ ! -s "${MY_SOP}.log" ]; then
+		${OSI_QUERY_BINARY} -o ${SEARCH_OSCAR_DEST} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
