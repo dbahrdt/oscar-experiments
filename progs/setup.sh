@@ -48,19 +48,8 @@ case $i in
 esac
 done
 
-update_git_repo() {
-	pushd $1
-	git pull --rebase origin master|| return 1
-	git submodule update || return 1
-	git submodule foreach --recursive git submodule update || return 1
-	popd
-}
-
 update_repos() {
-	update_git_repo ${VENDOR_PATH}/oscar || return 1
-	update_git_repo ${VENDOR_PATH}/ocse || return 1
-	update_git_repo ${VENDOR_PATH}/bitpacking || return 1
-	update_git_repo ${VENDOR_PATH}/osi-compare || return 1
+	git submodule update --remote --recursive ${VENDOR_PATH}/*
 }
 
 update_website_queries() {
@@ -235,6 +224,12 @@ MAKE_OPTIONS="-j${NPROC}"
 setup_build
 compile_build
 
+BUILD_NAME=debug-assert
+BUILD_OPTIONS="-DCMAKE_BUILD_TYPE=Debug -DSSERIALIZE_EXPENSIVE_ASSERT_ENABLED=true"
+MAKE_OPTIONS="-j${NPROC}"
+setup_build
+compile_build
+
 BUILD_NAME=lto
 BUILD_OPTIONS="-DCMAKE_BUILD_TYPE=lto"
 MAKE_OPTIONS="-j${NPROC}"
@@ -244,8 +239,8 @@ MAKE_OPTIONS="-j${NPROC}"
 BUILD_NAME=ultra-assert
 BUILD_OPTIONS="-DCMAKE_BUILD_TYPE=ultra -DSSERIALIZE_CHEAP_ASSERT_ENABLED=true"
 MAKE_OPTIONS="-j${NPROC}"
-#setup_build
-#compile_build
+setup_build
+compile_build
 
 BUILD_NAME=ultra
 BUILD_OPTIONS="-DCMAKE_BUILD_TYPE=ultra"
