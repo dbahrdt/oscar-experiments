@@ -105,7 +105,8 @@ fi
 
 if [ "${SEARCH_TYPE}" = "osi" ]; then
 	MY_LOGFILE_PREFIX="${LOGFILE_PREFIX}.${SEARCH_OSCAR_TYPE}.osi.${OSI_INDEX_TYPE}.benchmark"
-	OSI_PARAMS="-f ${SEARCH_OSI_DEST} --preload --compact-hcqr --hcqr-cache 100"
+	OSI_PARAMS="-f ${SEARCH_OSI_DEST} --preload"
+	OSI_HCQR_PARAMS="-o ${SEARCH_OSCAR_DEST} ${OSI_PARAMS} --hcqr-cache 100 --compact-hcqr"
 
 	MY_SOP="${MY_LOGFILE_PREFIX}.tcqr.text"
 	if [ ! -s "${MY_SOP}.log" ]; then
@@ -123,7 +124,11 @@ if [ "${SEARCH_TYPE}" = "osi" ]; then
 	
 	MY_SOP="${MY_LOGFILE_PREFIX}.hcqr.text"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} -o ${SEARCH_OSCAR_DEST} ${OSI_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
+		if [ ${USE_DEBUGGER} ]; then
+			${OSI_QUERY_BINARY} ${OSI_HCQR_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" "true" 1
+		else
+			${OSI_QUERY_BINARY} ${OSI_HCQR_PARAMS} --benchmark ${OSI_TEXT_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
+		fi
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
@@ -144,7 +149,11 @@ if [ "${SEARCH_TYPE}" = "osi" ]; then
 	
 	MY_SOP="${MY_LOGFILE_PREFIX}.hcqr.text.setops"
 	if [ ! -s "${MY_SOP}.log" ]; then
-		${OSI_QUERY_BINARY} -o ${SEARCH_OSCAR_DEST} ${OSI_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
+		if [ ${USE_DEBUGGER} ]; then
+			${OSI_QUERY_BINARY} ${OSI_HCQR_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" "true" 1
+		else
+			${OSI_QUERY_BINARY} ${OSI_HCQR_PARAMS} --benchmark ${OSI_TEXT_SETOP_QUERIES} ${MY_SOP} "false" "true" 1 2>&1 > ${MY_SOP}.log
+		fi
 	else
 		echo "Skipping ${MY_SOP}"
 	fi
@@ -192,7 +201,7 @@ if [ "${SEARCH_TYPE}" = "ocse-lucene" ]; then
 fi
 
 if [ "${SEARCH_TYPE}" = "ocse-oscar" ]; then
-	if [ "${USE_GDB}" = "y" ]; then
+	if [ ${USE_DEBUGGER} ]; then
 		${OCSE_BINARY} -i ${CFG_DIR}/lists/k_values_substring_prefix.txt --oscar -q ${OCSE_QUERIES} ${SEARCH_OSCAR_DEST} 
 	else
 		MY_LOGFILE_PREFIX="${LOGFILE_PREFIX}.benchmark.ocse.oscar.${SEARCH_OSCAR_TYPE}"

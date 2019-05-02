@@ -136,5 +136,6 @@ if [ "${BUILD_NAME}" = "debug" ] || [ "${USE_GDB}" = "y" ] || [ "${USE_GDB}" = "
 	OSCAR_CMD_BINARY="cgdb --args ${OSCAR_CMD_BINARY}"
 	OSCAR_CREATE_BINARY="cgdb --args ${OSCAR_CREATE_BINARY}"
 	OSI_CREATE_BINARY="cgdb --args ${OSI_CREATE_BINARY}"
+	OSI_QUERY_BINARY="cgdb --args ${OSI_QUERY_BINARY}"
 fi
 
