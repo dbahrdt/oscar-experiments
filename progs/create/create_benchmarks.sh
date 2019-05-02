@@ -105,7 +105,7 @@ fi
 
 if [ "${SEARCH_TYPE}" = "osi" ]; then
 	MY_LOGFILE_PREFIX="${LOGFILE_PREFIX}.${SEARCH_OSCAR_TYPE}.osi.${OSI_INDEX_TYPE}.benchmark"
-	OSI_PARAMS="-f ${SEARCH_OSI_DEST} --preload"
+	OSI_PARAMS="-f ${SEARCH_OSI_DEST} --preload --compact-hcqr --hcqr-cache 100"
 
 	MY_SOP="${MY_LOGFILE_PREFIX}.tcqr.text"
 	if [ ! -s "${MY_SOP}.log" ]; then
